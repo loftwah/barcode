@@ -2,6 +2,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from tkinter import *
 from tkinter.ttk import Notebook
+import bluetooth
 
 scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
@@ -42,6 +43,14 @@ def ui():
     tablayout.add(tab1)
     tablayout.pack(fill="both")
     root.mainloop()
+def ble();
+    nearby_devices = bluetooth.discover_devices(lookup_names=True)
+    print("found %d devices" % len(nearby_devices))
+
+    for addr, name in nearby_devices:
+    print("  %s - %s" % (addr, name))
+
+
 
 while True:
     sum = 0
@@ -56,4 +65,5 @@ while True:
     # print(r)
     for a in range(2, r + 2):
         sum = sum + int(customer.cell(a, 2).value)
+    ble()
     ui()
